@@ -1,0 +1,43 @@
+{
+  "skill_name": "skill-generate",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "スキルを作って。GitのPRを自動でレビューして、コメントの品質とかを見てくれるやつ",
+      "expected_output": "The skill asks clarifying questions (using AskUserQuestion) about what 'review' means — commit message quality, code changes, both? — before proceeding. It checks existing skills for overlap, proposes a single-responsibility design, confirms with the user, and hands off a complete spec to skill-creator.",
+      "files": [],
+      "assertions": [
+        "Uses AskUserQuestion to clarify the scope of 'review' before designing",
+        "Checks whether an existing skill already covers this use case",
+        "Proposes a verb-based skill name like 'review-pr' or 'analyze-pr'",
+        "Produces a complete specification to hand off to skill-creator",
+        "Responds in Japanese throughout the conversation"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want to add a slash command that converts CSV files to JSON format",
+      "expected_output": "The skill gathers requirements (what columns, what JSON structure, any transformations?), checks for existing skills that might handle this, designs a single-purpose skill called something like 'convert-csv', confirms with the user, and delegates to skill-creator with a clear spec.",
+      "files": [],
+      "assertions": [
+        "Checks existing skills before proposing a new one",
+        "Asks at least one clarifying question about the expected JSON format or transformation rules",
+        "Proposes a concise verb-based name",
+        "Hands off a complete English-language specification to skill-creator"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "新しいスキルを作りたいんだけど、データ分析してレポート作って、それをSlackに送って、あとダッシュボードも更新してくれるやつ",
+      "expected_output": "The skill recognizes this is too broad for a single skill, proposes splitting into multiple focused skills (e.g., analyze-data, generate-report, notify-slack, update-dashboard), and uses AskUserQuestion to confirm the split before proceeding.",
+      "files": [],
+      "assertions": [
+        "Identifies that the request spans multiple distinct responsibilities",
+        "Proposes splitting into 2 or more separate skills",
+        "Uses AskUserQuestion to confirm the split with the user before proceeding",
+        "Does NOT attempt to design a single monolithic skill covering all four capabilities",
+        "Responds in Japanese"
+      ]
+    }
+  ]
+}
