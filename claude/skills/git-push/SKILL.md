@@ -13,7 +13,7 @@ After a successful push, summarize what was pushed and invoke `/git-pr-summary` 
 - NEVER, UNDER ANY CIRCUMSTANCES, PUSH TO `main` OR `master`. IF THE CURRENT BRANCH IS `main` OR `master`, ABORT IMMEDIATELY AND TELL THE USER.
 - Do not run `git merge` unless the user explicitly authorized it in the current conversation just before this push. If a merge is needed but not authorized, ask first.
 - Always confirm before pushing — show the user what will be pushed and wait for approval.
-- After a successful push, always invoke `/git-pr-summary`.
+- After a successful push, ask the user whether to create a PR before invoking `/git-pr-summary`.
 
 ## Workflow
 
@@ -67,14 +67,17 @@ git push -u origin $(git branch --show-current)
 
 If the push fails (e.g., rejected due to non-fast-forward), do NOT force push. Explain the situation to the user in Japanese and ask how to proceed.
 
-### 5. Summarize and invoke /git-pr-summary
+### 5. Summarize and ask about PR
 
 After a successful push, briefly summarize in Japanese:
 - Which branch was pushed
 - How many commits were pushed
 - The commit subjects (one line each)
 
-Then immediately invoke `/git-pr-summary` to handle PR title, body, issue linking, and PR creation. Do not do issue detection here — that is /git-pr-summary's responsibility.
+Then ask the user in Japanese:
+> 「PRを作成しますか？」
+
+Only invoke `/git-pr-summary` if the user says yes (or an equivalent affirmative). Do not auto-invoke it.
 
 ## Examples
 
@@ -94,4 +97,4 @@ Then immediately invoke `/git-pr-summary` to handle PR title, body, issue linkin
 
 **Post-push summary:**
 > `feature/add-search` を origin にpushしました（3コミット）。
-> `/git-pr-summary` でプルリクエストの説明を生成します…
+> PRを作成しますか？
