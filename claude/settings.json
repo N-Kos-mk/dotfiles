@@ -13,6 +13,6 @@
     }
   },
   "language": "japanese",
-  "effortLevel": "max",
-  "showThinkingSummaries": true
+  "showThinkingSummaries": true,
+  "effortLevel": "max"
 }
