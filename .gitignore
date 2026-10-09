@@ -1,1 +1,5 @@
 .DS_Store
+
+# Claude Code がアカウントごとに自動同期する公式スキルのキャッシュ
+# (~/.claude/skills が claude/skills へのシンボリックリンクのため流入する)
+claude/skills/synced/
